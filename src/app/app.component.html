@@ -1,26 +1,27 @@
-<body>
-<h1>MyTrips</h1>
+<!--<div class="jumbotron">Hello {{name}}</div>-->
+<form (ngSubmit)="addContact()">
+  <label for="inputFirstName">First name:</label>
+  <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
+  <label for="inputSurname">Surname:</label>
+  <input type="text" [(ngModel)]="newContact.surname" name="surname" id="inputSurname" class="form-control">
+  <label for="inputEmail">E-mail address:</label>
+  <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail" class="form-control">
+  <button class="btn btn-primary">Add</button>
+</form>
 
-<ul id="trips">
-  <li class="trip">
-    <div class="date">12/5/2005</div>
-    <div class="city">Rome</div>
-    <div class="review">Had a great time, good food and splendid weather.</div>
-    <div class="rating">9</div>
-  </li>
-  <li class="trip">
-    <div class="date">26/7/2008</div>
-    <div class="city">Venice</div>
-    <div class="review">Beautiful! But so crouded..</div>
-    <div class="rating">8</div>
-  </li>
-  <li class="trip">
-    <div class="date">02/8/2017</div>
-    <div class="city">Budapest</div>
-    <div class="review">Epic. Just Epic.</div>
-    <div class="rating">10</div>
-  </li>
-</ul>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>E-mail address</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td>{{contact.firstName}} {{contact.surname}}</td><td>{{contact.email}}</td>
+    <td>
+      <button class="btn">Edit</button>
+      <button class="btn btn-danger" (click)="deleteContact(contact)">Delete</button>
+    </td>
+  </tr>
+</table>
 
-<footer>Waldo &copy; <span>2020</span></footer>
-</body>
+
